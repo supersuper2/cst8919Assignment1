@@ -1,6 +1,5 @@
 ### Valid Authenticated Access
-GET http://<yourapp>.azurewebsites.net/protected
-Authorization: Bearer <valid_token>
+GET https://cst8919assignment-eahfc6c3hmhfgddv.canadacentral-01.azurewebsites.net/login
 
 ### Invalid Access (no token)
-GET http://<yourapp>.azurewebsites.net/protected
+GET https://cst8919assignment-eahfc6c3hmhfgddv.canadacentral-01.azurewebsites.net/protected
