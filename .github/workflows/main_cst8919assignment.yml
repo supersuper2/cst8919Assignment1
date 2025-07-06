@@ -66,4 +66,4 @@ jobs:
         with:
           app-name: 'cst8919assignment'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_9A88D9AF13974235BB9CA2212365781C }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_98C5D90075C9458A804BFC74730AE10C }}
