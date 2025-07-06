@@ -1,0 +1,6 @@
+### Valid Authenticated Access
+GET http://<yourapp>.azurewebsites.net/protected
+Authorization: Bearer <valid_token>
+
+### Invalid Access (no token)
+GET http://<yourapp>.azurewebsites.net/protected
