@@ -122,7 +122,7 @@ def logout():
     log_user_activity("logout", user_info=user_info)
     session.clear()
 
-    base_url = "cst8919assignment-eahfc6c3hmhfgddv.canadacentral-01.azurewebsites.net"
+    base_url = "https://cst8919assignment-eahfc6c3hmhfgddv.canadacentral-01.azurewebsites.net"
     logout_url = (
         f"https://{AUTH0_DOMAIN}/v2/logout"
         f"?returnTo={base_url}"
