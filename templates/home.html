@@ -5,12 +5,16 @@
   </head>
   <body>
     {% if session %}
-        <h1>Welcome {{session.userinfo.name}}!</h1>
-        <p><a href="/logout">Logout</a></p>
-        <div><pre>{{pretty}}</pre></div>
+        {% if user and user.userinfo %}
+            Hello, {{ user.userinfo.email }}!
+        {% else %}
+            Hello, Guest!
+        {% endif %}
+        <p>Welcome</p>
+        <p><a href="/protected">Go to Security Overview</a> or <a href="/logout">Sign out</a></p>
     {% else %}
-        <h1>Welcome Guest</h1>
-        <p><a href="/login">Login</a></p>
+        <h1>SecureZone Portal</h1>
+        <p><a href="/login">Sign In</a></p>
     {% endif %}
   </body>
 </html>
