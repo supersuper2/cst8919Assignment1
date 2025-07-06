@@ -47,16 +47,19 @@ def login():
 
 @app.route("/callback", methods=["GET", "POST"])
 def callback():
-    token = oauth.auth0.authorize_access_token()
-    session["user"] = token
+    try:
+        token = oauth.auth0.authorize_access_token()
+        user_info = oauth.auth0.userinfo(token=token)
+        session["user"] = user_info  # Save user info in session
 
-    user_info = token.get("userinfo", {})
-    user_id = user_info.get("sub", "unknown")
-    email = user_info.get("email", "unknown")
+        user_id = user_info.get("sub", "unknown")
+        email = user_info.get("email", "unknown")
 
-    app.logger.info(f"LOGIN: user_id={user_id} email={email} timestamp={datetime.utcnow().isoformat()}")
-
-    return redirect("/")
+        app.logger.info(f"LOGIN: user_id={user_id} email={email} timestamp={datetime.utcnow().isoformat()}")
+        return redirect("/")
+    except Exception as e:
+        app.logger.error(f"Callback error: {e}")
+        return "Authentication failed", 500
 
 # Logout route
 @app.route("/logout")
