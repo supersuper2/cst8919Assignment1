@@ -4,9 +4,9 @@ Demo Link: https://youtu.be/DhNa481Me5g
 
 ---
 
-## 🛠️ Setup Steps
+## Setup Steps
 
-### 1. ✅ Auth0 Configuration
+### 1. Auth0 Configuration
 
 1. Go to [Auth0 Dashboard](https://manage.auth0.com)
 2. Create a new **Regular Web Application** and setup a the **Application Settings**:
@@ -36,7 +36,7 @@ Demo Link: https://youtu.be/DhNa481Me5g
    - Region: Same as your App Service (e.g., Canada Central)
 4. Click Review + Create → then Create
 
-#### 4. In Log Analytics
+#### In App Services
 1. Go to your App Service
 2. Under Monitoring, click "Diagnostic settings"
 3. Click “+ Add diagnostic setting”
@@ -47,11 +47,9 @@ Demo Link: https://youtu.be/DhNa481Me5g
 6. Click Save
 
 ---
----
 
-## 📋 Logging & Detection Logic
 
-## 📊 KQL Query for Suspicious Behavior
+## 📊 KQL Query 
 
 Detects users who accessed `/protected` more than 10 times in the last 15 minutes:
 
