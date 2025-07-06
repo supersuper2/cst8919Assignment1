@@ -61,11 +61,6 @@ def home():
                      user_info=user.get('userinfo') if user else None)
     return render_template("home.html", user=user)
 
-@app.route("/ping")
-def ping():
-    return {"status": "healthy", "timestamp": datetime.utcnow().isoformat()}, 200
-
-
 @app.route("/login")
 def login():
     log_user_activity("login_initiated")
@@ -85,13 +80,10 @@ def callback():
         if not code:
             raise Exception("No authorization code received")
         
-        # Exchange code for token
         token = oauth.auth0.authorize_access_token()
         
-        # Get user info
         userinfo = oauth.auth0.get('userinfo', token=token).json()
         
-        # Store only essential user info to avoid large cookies
         session['user'] = {
             'userinfo': {
                 'sub': userinfo.get('sub'),
@@ -147,11 +139,6 @@ def protected():
                      details={"route": "/protected"})
     
     return render_template("protected.html", user=user['userinfo'])
-
-# Add a health check endpoint for monitoring
-@app.route("/health")
-def health():
-    return {"status": "healthy", "timestamp": datetime.utcnow().isoformat()}, 200
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=int(os.getenv("PORT", 8000)))
